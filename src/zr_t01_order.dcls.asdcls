@@ -1,0 +1,8 @@
+@EndUserText.label: 'ZR_T01_ORDER'
+@MappingRole: true
+
+define role ZR_T01_ORDER
+{
+  grant select on ZR_T01_ORDER
+    where true;
+}

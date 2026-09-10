@@ -1,0 +1,148 @@
+managed implementation in class zbp_r_t01_order unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_T01_ORDER alias ZrT01Order
+persistent table zt01_order
+extensible
+draft table zt01_order_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( instance, global )
+early numbering
+{
+  field ( mandatory : create )
+  CustomerID;
+
+
+  field ( readonly )
+  OrderID,
+  TotalAmount,
+  CreatedBy,
+  CreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+  create ( authorization : global );
+  update;
+  delete;
+
+  determination SetInitialValues on modify { create; }
+
+  determination CreateInvoice on modify
+  {
+    field StatusId;
+  }
+
+  validation ValidateCustomer on save
+  {
+    create;
+    field CustomerId;
+  }
+
+  validation ValidateOrderItems on save
+  {
+    field StatusId;
+  }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+
+  association _Orders_Itm { create; with draft; }
+
+  mapping for zt01_order corresponding extensible
+    {
+      OrderId            = ORDER_ID;
+      CustomerId         = CUSTOMER_ID;
+      StatusId           = STATUS_ID;
+      OrderDate          = ORDER_DATE;
+      TotalAmount        = TOTAL_AMOUNT;
+      CurrencyCode       = CURRENCY_CODE;
+      Remarks            = REMARKS;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+
+}
+
+define behavior for ZR_T01_ORDER_ITM alias ZrT01OrderITM
+persistent table zt01_order_itm
+draft table zt01_order_i_d
+lock dependent by _Orders
+authorization dependent by _Orders
+early numbering
+{
+  update;
+  delete;
+  field ( readonly )
+  OrderId,
+  ItemlineNo,
+  ArticleName,
+  UnitPrice,
+  NetAmount,
+  CurrencyCode,
+  CreatedBy,
+  CreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+  determination RecalcOrderTotal on modify
+  {
+    create;
+    delete;
+    field NetAmount;
+
+  }
+
+  determination SetArticleData on modify { field ArticleId; }
+
+  determination CalculateNetAmount on modify
+  {
+    field ArticleQuantity;
+    field UnitPrice;
+  }
+
+  validation ValidateArticle on save
+  {
+    create;
+    field ArticleId;
+  }
+
+  side effects
+  {
+    field ArticleId affects field ArticleName,
+        field Unit,
+        field UnitPrice,
+        field CurrencyCode;
+  }
+
+  association _Orders { with draft; }
+
+  mapping for zt01_order_itm corresponding
+    {
+      OrderId            = ORDER_ID;
+      ItemlineNo         = ITEMLINE_NO;
+      ArticleId          = ARTICLE_ID;
+      ArticleName        = ARTICLE_NAME;
+      ArticleQuantity    = ARTICLE_QUANTITY;
+      Unit               = UNIT;
+      UnitPrice          = UNIT_PRICE;
+      NetAmount          = NET_AMOUNT;
+      CurrencyCode       = CURRENCY_CODE;
+      Remarks            = REMARKS;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+}

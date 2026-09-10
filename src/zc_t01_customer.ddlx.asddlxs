@@ -1,0 +1,246 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'CustomerID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'CustomerID'
+annotate view ZC_T01_CUSTOMER with
+{
+  @UI.facet: [ {
+    label: 'Allgemeine Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  },
+  {
+    id: 'Correspondence',
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    label: 'Korrespondenz',
+    position: 20,
+    targetElement: '_Corr'
+  },
+  {
+    id: 'Orders',
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    label: 'Aufträge',
+    position: 30,
+    targetElement: '_Order'
+  },
+  {
+    id: 'Invoices',
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    label: 'Rechnungen',
+    position: 40,
+    targetElement: '_Invoice'
+  }
+]
+  
+  
+  @UI.identification: [ {
+    position: 10 
+  } ]
+  @UI.lineItem: [ {
+    position: 10 
+  } ]
+  @UI.selectionField: [ {
+    position: 10
+  } ]
+//   @Consumption.valueHelpDefinition:
+//   [{ entity.name: 'ZI_T01_CUSTOMER_VALUE_HELP',
+//      entity.element: 'CustomerID'  }]
+ 
+  CustomerID;
+  
+  @UI.identification: [ {
+    position: 20 
+  } ]
+  @UI.lineItem: [ {
+    label: 'Kategorie',
+    position: 20     
+  } ]
+  CategoryID;
+  
+//  @UI.identification: [ {
+//  position: 25,
+//  label : 'Kategorie'
+//  } ]
+  @UI.selectionField: [ {
+    position: 25 
+  } ]
+  @Consumption.valueHelpDefinition:
+   [{ entity.name: 'ZI_T01_FV_CUSTOMER_CATEGORY',
+      entity.element: 'CategoryName'  }]
+  CategoryName;
+  
+  @UI.identification: [ {
+    position: 30 
+  } ]
+  @UI.lineItem: [ {
+    label: 'Firma',
+    position: 30 
+  } ]
+  @UI.selectionField: [ {
+    position: 30
+  } ]  
+  CompanyName;
+  
+  @UI.identification: [ {
+    position: 40 
+  } ]
+  @UI.lineItem: [ {
+    position: 40 
+  } ]
+  @UI.selectionField: [ {
+    position: 40
+  } ]
+  Street;
+  
+  @UI.identification: [ {
+    position: 50 
+  } ]
+  @UI.lineItem: [ {
+    position: 50 
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Title;
+  
+  @UI.identification: [ {
+    position: 60 
+  } ]
+  @UI.lineItem: [ {
+    position: 60 
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  FirstName;
+  
+  @UI.identification: [ {
+    position: 70 
+  } ]
+  @UI.lineItem: [ {
+    position: 70 
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  LastName;
+  
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  @UI.lineItem: [ {
+    position: 80 
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  PhoneNumber;
+  
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  @UI.lineItem: [ {
+    position: 90 
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
+  } ]
+  EmailAddress;
+  
+  @UI.identification: [ {
+    position: 100 
+  } ]
+  @UI.lineItem: [{
+  position: 100,
+  label: 'Bemerkungen'
+   }]
+  @UI.selectionField: [ {
+    position: 100 
+  } ]
+  Remarks;
+  
+  @UI.identification: [ {
+    position: 110 
+  } ]
+  @UI.lineItem: [ {
+    position: 110 
+  } ]
+  @UI.selectionField: [ {
+    position: 110 
+  } ]
+  PostalCode;
+  
+  @UI.identification: [ {
+    position: 120 
+  } ]
+  @UI.lineItem: [ {
+    position: 120 
+  } ]
+  @UI.selectionField: [ {
+    position: 120 
+  } ]
+  City;
+  
+  @UI.identification: [ {
+    position: 130 
+  } ]
+  @UI.lineItem: [ {
+    position: 130 
+  } ]
+  @UI.selectionField: [ {
+    position: 130 
+  } ]
+  CountryCode;
+  
+  @UI.identification: [ {
+    position: 140 
+  } ]
+  @UI.lineItem: [ {
+    position: 140 
+  } ]
+
+
+  CreatedBy;
+  
+  @UI.identification: [ {
+    position: 150 
+  } ]
+  @UI.lineItem: [ {
+    position: 150 
+  } ]
+
+  CreatedAt;
+  
+  @UI.identification: [ {
+    position: 160 
+  } ]
+  @UI.lineItem: [ {
+    position: 160 
+  } ]
+
+  LocalLastChangedBy;
+  
+  @UI.identification: [ {
+    position: 170 
+  } ]
+  @UI.lineItem: [ {
+    position: 170 
+  } ]
+
+  LocalLastChangedAt;
+  
+  @UI.identification: [ {
+    position: 180 
+  } ]
+  @UI.lineItem: [ {
+    position: 180 
+  } ]
+ 
+  LastChangedAt;
+}

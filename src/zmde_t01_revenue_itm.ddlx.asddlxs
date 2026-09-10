@@ -1,0 +1,107 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+  typeName: 'Umsatzposition',
+  typeNamePlural: 'Umsatzpositionen',
+  title: {
+    type: #STANDARD,
+    value: 'CompanyName'
+  }
+}
+
+annotate entity ZCE_T01_REVENUE_ITM with
+{
+  @UI.hidden: true
+  RevenueRowKey;
+
+  @UI.selectionField: [{ position: 20 }]
+  CompanyName;
+
+  @UI.lineItem: [{
+    position: 10,
+    label: 'Kunde',
+    importance: #HIGH,
+    cssDefault.width: '16rem'
+  }]
+  @UI.selectionField: [{ position: 10 }]
+  CustomerId;
+
+  @UI.lineItem: [{
+    position: 30,
+    label: 'Bestellung',
+    importance: #HIGH,
+    cssDefault.width: '7rem'
+  }]
+  @UI.selectionField: [{ position: 30 }]
+  OrderId;
+
+  @UI.lineItem: [{
+    position: 40,
+    label: 'Best. Datum',
+    importance: #HIGH,
+    cssDefault.width: '7rem'
+  }]
+  OrderDate;
+
+  @UI.lineItem: [{
+    position: 50,
+    label: 'Rechnung',
+    importance: #HIGH,
+    cssDefault.width: '7rem'
+  }]
+  @UI.selectionField: [{ position: 40 }]
+  InvoiceId;
+
+  @UI.lineItem: [{
+    position: 60,
+    label: 'Rg. Datum',
+    importance: #HIGH,
+    cssDefault.width: '7rem'
+  }]
+  InvoiceDate;
+
+  @UI.lineItem: [{
+    position: 70,
+    label: 'Status',
+    importance: #HIGH,
+    cssDefault.width: '9rem'
+  }]
+  @UI.selectionField: [{ position: 50 }]
+  InvoiceStatus;
+
+  @UI.selectionField: [{ position: 70 }]
+  ArticleName;
+
+  @UI.lineItem: [{
+    position: 90,
+    label: 'Artikel',
+    importance: #HIGH,
+    cssDefault.width: '17rem'
+  }]
+  @UI.selectionField: [{ position: 60 }]
+  ArticleId;
+
+  @UI.lineItem: [{
+    position: 110,
+    label: 'Menge',
+    importance: #HIGH,
+    cssDefault.width: '6rem'
+  }]
+  QuantityDisplay;
+
+  @UI.lineItem: [{
+    position: 120,
+    label: 'Einzelpreis',
+    importance: #HIGH,
+    cssDefault.width: '8rem'
+  }]
+  UnitPriceDisplay;
+
+  @UI.lineItem: [{
+    position: 130,
+    label: 'Umsatz',
+    importance: #HIGH,
+    cssDefault.width: '9rem'
+  }]
+  PositionAmount;
+}

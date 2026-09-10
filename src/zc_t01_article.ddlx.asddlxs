@@ -1,0 +1,160 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'ArticleId'
+
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'ArticleName'
+
+annotate view ZC_T01_ARTICLE with
+{
+  @UI.facet: [
+    {
+      label: 'Allgemeine Informationen',
+      id: 'GeneralInfo',
+      purpose: #STANDARD,
+      position: 10,
+      type: #IDENTIFICATION_REFERENCE
+    }
+  ]
+
+  @UI.identification: [ {
+      position: 10,
+      label: 'Artikelnummer'
+    } ]
+  @UI.lineItem: [ {
+      position: 10,
+      label: 'Artikelnummer'
+    } ]
+  @UI.selectionField: [ {
+      position: 10
+    } ]
+  ArticleId;
+
+  @UI.identification: [
+    {
+      position: 20,
+      label: 'Kategorie'
+    }
+  ]
+  @UI.lineItem: 
+  [
+       {
+        label: 'Kategorie',
+        position: 20
+      }
+   ]
+  CategoryID;
+
+  @UI.selectionField: [ {
+    position: 25
+  } ]
+  @Consumption.valueHelpDefinition:
+   [
+       { entity.name: 'ZI_T01_FV_ARTICLE_CATEGORY',
+          entity.element: 'CategoryName' 
+        }
+    ]
+  CategoryName;
+
+  @UI.identification: [
+    {
+      position: 40,
+      label: 'Artikelname'
+    }
+  ]
+  @UI.lineItem: [
+    {
+      position: 40,
+      label: 'Artikelname'
+    }
+  ]
+  @UI.selectionField: [
+    {
+      position: 40
+    }
+  ]
+  ArticleName;
+
+  @UI.identification: [
+    {
+      position: 50,
+      label: 'Preis'
+    }
+  ]
+  @UI.lineItem: [
+    {
+      position: 50,
+      label: 'Preis'
+    }
+  ]
+  Price;
+
+  @UI.identification: [
+    {
+      position: 70,
+      label: 'Einheit'
+    }
+  ]
+  @UI.lineItem: [
+    {
+      position: 70,
+      label: 'Einheit'
+    }
+  ]
+  @Consumption.valueHelpDefinition: 
+  [
+     { 
+   entity: { name: 'ZI_T01_UNIT', element: 'Unit' } 
+     }
+   ]
+  Unit;
+
+  @UI.identification: [
+    {
+      position: 80,
+      label: 'Bemerkungen'
+    }
+  ]
+  Remarks;
+
+  @UI.identification: [
+    {
+      position: 100,
+      label: 'Erstellt von'
+    }
+  ]
+  CreatedBy;
+
+  @UI.identification: [
+    {
+      position: 110,
+      label: 'Erstellt am'
+    }
+  ]
+  CreatedAt;
+
+  @UI.identification: [
+    {
+      position: 120,
+      label: 'Zuletzt geändert von'
+    }
+  ]
+  LocalLastChangedBy;
+
+  @UI.identification: [
+    {
+      position: 130,
+      label: 'Lokale letzte Änderung'
+    }
+  ]
+  LocalLastChangedAt;
+
+  @UI.identification: [
+    {
+      position: 140,
+      label: 'Letzte Änderung'
+    }
+  ]
+  LastChangedAt;
+}

@@ -1,0 +1,20 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_T01_CUSTOMER'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_T01_CUSTOMER'
+  }
+}
+define service ZUI_T01_CUSTOMER_O4
+  provider contracts odata_v4_ui {
+  expose ZC_T01_CUSTOMER;
+  expose ZC_T01_ARTICLE;
+  expose ZC_T01_CORR;
+  expose ZC_T01_ORDER;
+  expose ZC_T01_ORDER_ITM;
+  expose ZC_T01_INVOICE;
+  expose ZC_T01_INVOICE_ITM;
+  expose ZCE_T01_REVENUE;
+  expose ZCE_T01_REVENUE_ITM;
+}

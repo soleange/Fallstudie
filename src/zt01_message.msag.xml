@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZT01_MESSAGE</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Meldungen für Kunden- und Artikelvalidierung</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>103</MSGNR>
+     <TEXT>Bitte PK oder GK auswählen.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>104</MSGNR>
+     <TEXT>Vorname muss angegeben werden.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>105</MSGNR>
+     <TEXT>Nachname muss angegeben werden.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>106</MSGNR>
+     <TEXT>Telefonnummer muss angegeben werden.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>107</MSGNR>
+     <TEXT>E-Mail-Adresse muss angegeben werden.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>108</MSGNR>
+     <TEXT>Straße muss angegeben werden.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>109</MSGNR>
+     <TEXT>Postleitzahl muss angegeben werden.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>110</MSGNR>
+     <TEXT>Ort muss angegeben werden.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>201</MSGNR>
+     <TEXT>Artikelkategorie auswählen.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>202</MSGNR>
+     <TEXT>Artikelname muss angegeben werden.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>203</MSGNR>
+     <TEXT>Preis muss größer als 0 sein.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>204</MSGNR>
+     <TEXT>Währung fehlt.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZT01_MESSAGE</ARBGB>
+     <MSGNR>205</MSGNR>
+     <TEXT>Einheit muss angegeben werden.</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

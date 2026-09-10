@@ -1,0 +1,53 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+  typeName: 'Umsatz',
+  typeNamePlural: 'Umsätze',
+  title: {
+    type: #STANDARD,
+    value: 'CompanyName'
+  }
+}
+
+annotate view ZC_T01_REVENUE with
+{
+  @UI.facet: [
+    {
+      id: 'RevenueDetails',
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Umsatzdetails',
+      position: 10
+    }
+  ]
+
+  @UI.lineItem: [{ position: 10, label: 'Kunde' }]
+  @UI.selectionField: [{ position: 10 }]
+  CompanyName;
+
+  @UI.lineItem: [{ position: 20, label: 'Kundennummer' }]
+  @UI.selectionField: [{ position: 20 }]
+  CustomerId;
+
+  @UI.lineItem: [{ position: 30, label: 'Bestellung' }]
+  @UI.selectionField: [{ position: 30 }]
+  OrderId;
+
+  @UI.lineItem: [{ position: 40, label: 'Bestelldatum' }]
+  @UI.selectionField: [{ position: 40 }]
+  OrderDate;
+
+  @UI.lineItem: [{ position: 50, label: 'Rechnung' }]
+  @UI.selectionField: [{ position: 50 }]
+  InvoiceId;
+
+  @UI.lineItem: [{ position: 60, label: 'Rechnungsdatum' }]
+  @UI.selectionField: [{ position: 60 }]
+  InvoiceDate;
+
+  @UI.lineItem: [{ position: 70, label: 'Status' }]
+  @UI.selectionField: [{ position: 70 }]
+  InvoiceStatus;
+
+  @UI.lineItem: [{ position: 80, label: 'Bruttoumsatz' }]
+  GrossRevenue;
+}

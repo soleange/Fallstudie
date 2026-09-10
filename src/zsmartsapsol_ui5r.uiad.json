@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Fiori App für Kunden- und Auftragsverwaltung",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Smart SAP Solutions GmbH"
+  },
+  "ui5AppDetails": {
+    "appId": "smartsapsolutions"
+  },
+  "navigation": {
+    "targetMappingId": "ZSMARTSAPSOL_UI5R_TM",
+    "semanticObject": "SmartSAPSolutions",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZSMARTSAPSOL_UI5R_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Smart SAP Solutions GmbH"
+      }
+    }
+  ]
+}

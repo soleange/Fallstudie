@@ -1,0 +1,92 @@
+managed implementation in class ZBP_R_T01_CUSTOMER unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_T01_CUSTOMER alias ZrT01Customer
+persistent table zt01_customer
+extensible
+draft table zt01_customer_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( instance, global )
+early numbering
+{
+
+  field ( readonly )
+  CustomerID,
+  CreatedBy,
+  CreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+  //field ( readonly : update )
+  //CustomerID;
+
+// Pflichtfelder des Kunden
+  field ( mandatory )
+  CategoryId,
+  FirstName,
+  LastName,
+  PhoneNumber,
+  EmailAddress,
+  street,
+  postalcode,
+  city;
+
+  // Prüft die Kundendaten vor dem Speichern
+  validation validateCustomer on save
+  {
+    create;
+    update;
+
+    field CategoryId,
+    FirstName,
+    LastName,
+    PhoneNumber,
+    EmailAddress,
+    Street,
+    PostalCode,
+    City;
+  }
+
+
+  create ( authorization : global );
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+//  draft determine action Prepare;
+
+// Führt die Validierung vor der Aktivierung des Drafts aus
+  draft determine action Prepare
+  {
+    validation validateCustomer;
+  }
+
+  mapping for zt01_customer corresponding extensible
+    {
+      CustomerID         = CUSTOMER_ID;
+      CategoryID         = CATEGORY_ID;
+      CompanyName        = COMPANY_NAME;
+      Remarks            = REMARKS;
+      Title              = TITLE;
+      FirstName          = FIRST_NAME;
+      LastName           = LAST_NAME;
+      PhoneNumber        = PHONE_NUMBER;
+      EmailAddress       = EMAIL_ADDRESS;
+      Street             = STREET;
+      PostalCode         = POSTAL_CODE;
+      City               = CITY;
+      CountryCode        = COUNTRY_CODE;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+
+}

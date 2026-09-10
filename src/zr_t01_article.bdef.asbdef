@@ -1,0 +1,77 @@
+managed implementation in class ZBP_R_T01_ARTICLE unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_T01_ARTICLE alias ZrT01Article
+persistent table zt01_article
+extensible
+draft table zt01_article_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+//authorization master ( global )
+authorization master ( instance, global )
+early numbering
+{
+  // weglassen, weil readonly
+  //field ( mandatory : create )
+
+  field ( readonly )
+  ArticleID,
+  CreatedBy,
+  CreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+  field ( mandatory )
+  CategoryID,
+  ArticleName,
+  Price,
+  CurrencyCode,
+  Unit;
+
+
+  // Prüft die Pflichtfelder des Artikels
+  validation validateArticle on save
+  {
+    create;
+    update;
+
+    field CategoryId,
+    ArticleName,
+    Price,
+    CurrencyCode,
+    Unit;
+  }
+  create ( authorization : global );
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  //  draft determine action Prepare;
+
+  // Validierung vor der Aktivierung des Drafts
+  draft determine action Prepare
+  {
+    validation validateArticle;
+  }
+
+  mapping for zt01_article corresponding extensible
+    {
+      ArticleID          = ARTICLE_ID;
+      CategoryID         = CATEGORY_ID;
+      ArticleName        = ARTICLE_NAME;
+      Price              = PRICE;
+      CurrencyCode       = CURRENCY_CODE;
+      Unit               = UNIT;
+      Remarks            = REMARKS;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+}

@@ -1,0 +1,150 @@
+managed implementation in class zbp_r_t01_invoice unique;
+strict ( 2 );
+with draft;
+extensible;
+
+define behavior for ZR_T01_INVOICE alias ZrT01Invoice
+persistent table zt01_invoice
+extensible
+draft table zt01_invoice_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( instance, global )
+early numbering
+{
+  field ( mandatory : create )
+  OrderID,
+  CustomerID;
+
+  field ( readonly )
+  InvoiceID,
+  CreatedBy,
+  CreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+  create ( authorization : global );
+  update;
+  delete;
+
+  determination SetInitialValues on modify
+  {
+    create;
+  }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+
+  draft determine action Prepare
+  {
+    validation ZrT01InvoiceItm~ValidateArticle;
+  }
+
+  association _Invoice_Itm
+  {
+    create;
+    with draft;
+  }
+
+  mapping for zt01_invoice corresponding extensible
+    {
+      InvoiceId          = INVOICE_ID;
+      OrderId            = ORDER_ID;
+      CustomerId         = CUSTOMER_ID;
+      StatusId           = STATUS_ID;
+      InvoiceDate        = INVOICE_DATE;
+      TaxAmount          = TAX_AMOUNT;
+      TotalAmount        = TOTAL_AMOUNT;
+      CurrencyCode       = CURRENCY_CODE;
+      Remarks            = REMARKS;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+}
+
+
+define behavior for ZR_T01_INVOICE_ITM alias ZrT01InvoiceItm
+persistent table zt01_invoice_itm
+draft table zt01_invoice_i_d
+lock dependent by _Invoice
+authorization dependent by _Invoice
+early numbering
+{
+  update;
+  delete;
+
+  field ( readonly )
+  InvoiceId,
+  ItemlineNo,
+  CreatedBy,
+  CreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+  association _Invoice
+  {
+    with draft;
+  }
+
+  determination SetArticleData on modify
+  {
+    field ArticleId;
+  }
+
+  determination CalculateTotalAmount on modify
+  {
+    field ArticleQuantity;
+    field UnitPrice;
+  }
+
+  validation ValidateArticle on save
+  {
+    create;
+    field ArticleId;
+  }
+
+  determination RecalcInvoiceTotal on modify
+  {
+    create;
+    delete;
+    field TotalAmount;
+  }
+
+  side effects
+  {
+    field ArticleId affects field ArticleName,
+        field Unit,
+        field UnitPrice,
+        field CurrencyCode;
+
+    field ArticleQuantity affects field TotalAmount;
+    field UnitPrice affects field TotalAmount;
+  }
+
+  mapping for zt01_invoice_itm corresponding
+    {
+      InvoiceId          = INVOICE_ID;
+      ItemlineNo         = ITEMLINE_NO;
+      ItemlineNoOrder    = ITEMLINE_NO_ORDER;
+      ArticleId          = ARTICLE_ID;
+      ArticleName        = ARTICLE_NAME;
+      ArticleQuantity    = ARTICLE_QUANTITY;
+      Unit               = UNIT;
+      UnitPrice          = UNIT_PRICE;
+      TotalAmount        = TOTAL_AMOUNT;
+      CurrencyCode       = CURRENCY_CODE;
+      Remarks            = REMARKS;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+}

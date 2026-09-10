@@ -1,0 +1,53 @@
+managed implementation in class zbp_r_t01_corr unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_T01_CORR alias ZrT01Corr
+persistent table zt01_correspond
+extensible
+draft table zt01_corr_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+early numbering
+{
+
+  field ( readonly )
+  CorrId,
+  CreatedBy,
+  CreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+  determination SetInitialValues on modify
+  {
+    create;
+  }
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zt01_correspond corresponding extensible
+    {
+      CorrId             = CORR_ID;
+      CustomerId         = CUSTOMER_ID;
+      StatusId           = STATUS_ID;
+      CorrDate           = CORR_DATE;
+      Text               = TEXT;
+      TextType           = TEXT_TYPE;
+      Remarks            = REMARKS;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+}

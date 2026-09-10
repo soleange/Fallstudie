@@ -1,0 +1,188 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'InvoiceId'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'InvoiceId'
+annotate view ZC_T01_INVOICE with
+{
+  @UI.facet: [ {
+    label: 'Allgemeine Information',
+    id: 'GeneralInfo',
+    purpose: #STANDARD,
+    position: 10 ,
+    type: #IDENTIFICATION_REFERENCE
+  },
+  {
+    label: 'Rechnungspositionen',
+    id: 'ZrT01InvoiceItmItems',
+    purpose: #STANDARD,
+    position: 11 ,
+    type: #LINEITEM_REFERENCE,
+    targetElement: '_Invoice_Itm'
+  } ]
+  @UI.identification: [ {
+    position: 10
+  } ]
+  @UI.lineItem: [ {
+    position: 10
+  } ]
+  @UI.selectionField: [ {
+    position: 10
+  } ]
+  InvoiceId;
+
+  @UI.identification: [ {
+    position: 20,
+    type: #WITH_NAVIGATION_PATH,
+    targetElement: '_Orders'
+  } ]
+  @UI.lineItem: [ {
+    position: 20
+  } ]
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+  OrderId;
+
+  @UI.identification: [ {
+    position: 30,
+    type: #WITH_NAVIGATION_PATH,
+    targetElement: '_Customer'
+  } ]
+  @UI.lineItem: [ {
+    position: 30
+  } ]
+  @UI.selectionField: [ {
+    position: 30
+  } ]
+  CustomerId;
+
+  @UI.identification: [ {
+    position: 40,
+    label: 'Rechnungsstatus'
+  } ]
+  @UI.lineItem: [ {
+    position: 40
+  } ]
+  StatusId;
+  
+//   @UI.identification: [ {
+//  position: 45,
+//  label : 'Rechnungsstatus'
+//  } ]
+  @UI.selectionField: [ {
+    position: 45
+  } ]
+  @Consumption.valueHelpDefinition:
+   [{ entity.name: 'ZI_T01_FV_INVOICE_STATUS',
+      entity.element: 'StatusName'  }]
+  StatusName;
+  
+
+  @EndUserText.label: 'Rechnungsdatum'
+  @UI.identification: [ {
+    position: 50 ,
+    label: 'Rechnungsdatum'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 ,
+    label: 'Rechnungsdatum'
+  } ]
+  @UI.selectionField: [ {
+    position: 50
+  } ]
+  InvoiceDate;
+
+  @UI.identification: [ {
+    position: 60
+  } ]
+  @UI.lineItem: [ {
+    position: 60
+  } ]
+  @UI.selectionField: [ {
+    position: 60
+  } ]
+  TaxAmount;
+
+  @UI.identification: [ {
+    position: 70
+  } ]
+  @UI.lineItem: [ {
+    position: 70
+  } ]
+  @UI.selectionField: [ {
+    position: 70
+  } ]
+  TotalAmount;
+
+  @UI.identification: [ {
+    position: 80
+  } ]
+  @UI.lineItem: [ {
+    position: 80
+  } ]
+  @UI.selectionField: [ {
+    position: 80
+  } ]
+  Remarks;
+
+  @UI.identification: [ {
+    position: 90,
+    label: 'Erstellt von'
+  } ]
+  @UI.lineItem: [ {
+    position: 90
+  } ]
+  @UI.selectionField: [ {
+    position: 90
+  } ]
+  CreatedBy;
+
+  @UI.identification: [ {
+    position: 100,
+    label: 'Erstellt am'
+  } ]
+  @UI.lineItem: [ {
+    position: 100
+  } ]
+  @UI.selectionField: [ {
+    position: 100
+  } ]
+  CreatedAt;
+
+  @UI.identification: [ {
+    position: 110,
+    label: 'Zuletzt geändert von'
+  } ]
+  @UI.lineItem: [ {
+    position: 110
+  } ]
+  @UI.selectionField: [ {
+    position: 110
+  } ]
+  LocalLastChangedBy;
+
+  @UI.identification: [ {
+    position: 120,
+    label: 'Lokale letzte Änderung'
+  } ]
+  @UI.lineItem: [ {
+    position: 120
+  } ]
+  @UI.selectionField: [ {
+    position: 120
+  } ]
+  LocalLastChangedAt;
+
+  @UI.identification: [ {
+    position: 130,
+    label: 'Letzte Änderung'
+  } ]
+  @UI.lineItem: [ {
+    position: 130
+  } ]
+  @UI.selectionField: [ {
+    position: 130
+  } ]
+  LastChangedAt;
+}

@@ -1,0 +1,168 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'CorrId'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'CorrId'
+
+annotate view ZC_T01_CORR with
+{
+
+  @UI.facet: [
+    {
+      label: 'General Information',
+      id: 'GeneralInfo',
+      purpose: #STANDARD,
+      position: 10,
+      type: #IDENTIFICATION_REFERENCE
+    },
+    {
+      label: 'Nachricht',
+      id: 'MessageSection',
+      purpose: #STANDARD,
+      position: 20,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'MessageGroup'
+    }
+  ]
+
+  @UI.identification: [ {
+    position: 10
+  } ]
+  @UI.lineItem: [ {
+    position: 10
+  } ]
+  @UI.selectionField: [ {
+    position: 10
+  } ]
+  CorrId;
+
+
+  @UI.identification: [ {
+    position: 20
+  } ]
+  @UI.lineItem: [ {
+    position: 20
+  } ]
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+  CustomerId;
+
+
+  @UI.identification: [ {
+    position: 40
+  } ]
+  @UI.lineItem: [ {
+    label: 'Status',
+    position: 40
+  } ]
+  StatusId;
+
+
+  @EndUserText.label: 'Datum'
+  @UI.identification: [ {
+    position: 30,
+    label: 'Datum'
+  } ]
+  @UI.lineItem: [ {
+    position: 30,
+    label: 'Datum'
+  } ]
+  @UI.selectionField: [ {
+    position: 30
+  } ]
+  CorrDate;
+
+
+  @UI.fieldGroup: [ {
+    qualifier: 'MessageGroup',
+    position: 10,
+    label: 'Nachricht'
+  } ]
+  @UI.multiLineText: true
+  Text;
+
+
+  @UI.identification: [ {
+    position: 60
+  } ]
+  @UI.lineItem: [ {
+    position: 60
+  } ]
+  TextType;
+
+
+  @UI.identification: [ {
+    position: 70
+  } ]
+  @UI.lineItem: [ {
+    position: 70
+  } ]
+  @UI.selectionField: [ {
+    position: 70
+  } ]
+  Remarks;
+
+
+  @UI.identification: [ {
+    position: 80,
+    label: 'Erstellt von'
+  } ]
+  @UI.lineItem: [ {
+    position: 80,
+    label: 'Erstellt von'
+  } ]
+  @UI.selectionField: [ {
+    position: 80
+  } ]
+  CreatedBy;
+
+
+  @UI.identification: [ {
+    position: 90,
+    label: 'Erstellt am'
+  } ]
+  @UI.lineItem: [ {
+    position: 90,
+    label: 'Erstellt am'
+  } ]
+  @UI.selectionField: [ {
+    position: 90
+  } ]
+  CreatedAt;
+
+
+  @UI.identification: [ {
+    position: 100,
+    label: 'Zuletzt geändert von'
+  } ]
+  @UI.lineItem: [ {
+    position: 100
+  } ]
+  @UI.selectionField: [ {
+    position: 100
+  } ]
+  LocalLastChangedBy;
+
+
+  @UI.identification: [ {
+    position: 110,
+    label: 'Lokale letzte Änderung'
+  } ]
+  @UI.lineItem: [ {
+    position: 110
+  } ]
+  LocalLastChangedAt;
+
+
+  @UI.identification: [ {
+    position: 120,
+    label: 'Letzte Änderung'
+  } ]
+  @UI.lineItem: [ {
+    position: 120
+  } ]
+  LastChangedAt;
+
+}
